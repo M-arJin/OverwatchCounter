@@ -1,0 +1,423 @@
+/* Import a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --bg-dark: #111827;           /* Deep Navy background */
+    --panel-bg: #1f2937;         /* Lighter navy for cards */
+    --accent-pink: #f43f5e;      /* The neon pink highlight */
+    --accent-cyan: #06b6d4;      /* The neon blue highlight */
+    --accent-green: #10b981;     /* The neon green highlight */
+    --text-main: #e5e7eb;        /* Off-white text */
+    --text-dim: #9ca3af;         /* Grayed out text */
+    --border-color: #374151;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.highlight {
+    color: var(--accent-pink);
+    text-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+}
+
+header p {
+    color: var(--text-dim);
+}
+
+/* Hero Grid Layout */
+.role-section {
+    margin-bottom: 50px;
+}
+
+.role-section h2 {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--accent-cyan);
+    padding-left: 10px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+/* Hero Button Styling */
+.hero-btn {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-main);
+}
+
+.hero-btn:hover {
+    border-color: var(--accent-pink);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hero-portrait {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background: #000;
+}
+
+.hero-btn span {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Result View Styling */
+#result-view {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hidden {
+    display: none;
+}
+
+#back-button {
+    background: transparent;
+    color: var(--accent-pink);
+    border: 1px solid var(--accent-pink);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#back-button:hover {
+    background: var(--accent-pink);
+    color: white;
+}
+
+.result-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* Counter Columns */
+.counter-lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.counter-column {
+    background: rgba(31, 41, 55, 0.5);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.counter-column h3 {
+    margin-bottom: 20px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+ul {
+    list-style: none;
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.img-wrapper {
+    position: relative;
+    margin-right: 15px;
+}
+
+.counter-mini-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+}
+
+/* Ideal Pick / Hard Counter specific styling */
+.ideal-pick {
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+}
+
+.ideal-pick .counter-mini-img {
+    border-color: var(--accent-green);
+}
+
+.star-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--accent-green);
+    color: black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.counter-info .hero-name {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.counter-type {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.ideal-pick .counter-type {
+    color: var(--accent-green);
+}
+
+.team-bar {
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-cyan);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.slots-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.slot {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.slot:hover { border-color: var(--accent-pink); }
+
+.slot-img { width: 100%; height: 100%; object-fit: cover; }
+
+.calc-btn {
+    background: var(--accent-green);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.calc-btn:disabled {
+    background: var(--text-dim);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.score-bar {
+    width: 100%;
+    height: 4px;
+    background: #000;
+    margin-top: 5px;
+}
+
+.score-bar .fill {
+    height: 100%;
+    background: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-green);
+}
+
+/* Clear Team Button - Destructive Utility Style */
+.clear-btn {
+    background: transparent;
+    color: var(--accent-pink);
+    border: 1px solid var(--accent-pink);
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect: Subtle glow and fill */
+.clear-btn:hover {
+    background: rgba(244, 63, 94, 0.1); /* Very faint pink tint */
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Active effect: Click feedback */
+.clear-btn:active {
+    transform: scale(0.95);
+    background: var(--accent-pink);
+}
+
+/* Optional: Add a small 'X' icon via CSS before the text */
+.clear-btn::before {
+    content: '✕ ';
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+/* Ensure the button looks disabled if the team is already empty */
+.clear-btn:disabled {
+    border-color: var(--border-color);
+    color: var(--text-dim);
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.slot {
+    font-weight: 900;
+    color: var(--border-color); /* Dark gray letters */
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.slot.occupied {
+    border-style: solid;
+    border-color: var(--accent-cyan);
+}
+
+.slot.occupied img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Card Container for Info button + Selection button */
+.hero-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-cyan);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.info-btn:hover {
+    background: white;
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Team Analysis Cards */
+.team-counter-card {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.counter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.counter-details p {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+}
+
+.counter-details strong {
+    color: var(--accent-pink);
+}
+
+.score-bar {
+    height: 3px;
+    background: #111;
+    width: 100%;
+}
+
+.score-bar .fill {
+    height: 100%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 5px var(--accent-cyan);
+}
