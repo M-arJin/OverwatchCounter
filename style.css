@@ -421,3 +421,295 @@ ul {
     background: var(--accent-cyan);
     box-shadow: 0 0 5px var(--accent-cyan);
 }
+
+/* Synergy Section Styling */
+.synergy-section {
+    grid-column: 1 / -1; /* Makes it span across the bottom of the columns */
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(var(--accent-cyan-rgb), 0.05);
+    border-top: 1px solid var(--accent-cyan);
+    border-radius: 4px;
+}
+
+.synergy-section h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.synergy-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.synergy-hero {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #676b47;
+    padding: 5px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    opacity: 100;
+}
+
+.synergy-hero span {
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --panel-bg: #1e293b;
+    --accent-pink: #f43f5e;
+    --accent-cyan: #22d3ee;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --border: #334155;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+.highlight { color: var(--accent-pink); text-shadow: 0 0 10px rgba(244, 63, 94, 0.5); }
+
+/* Hero Selection Grid */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.hero-card {
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    text-align: center;
+}
+
+.hero-card img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+}
+
+.hero-card:hover { transform: scale(1.1); }
+.hero-card:hover img { border-color: var(--accent-cyan); }
+
+/* Result View Layout */
+.result-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.hero-focus img {
+    width: 100%;
+    border-radius: 12px;
+    border: 4px solid var(--accent-pink);
+}
+
+.logic-box {
+    background: rgba(34, 211, 238, 0.1);
+    border-left: 4px solid var(--accent-cyan);
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+}
+
+.counter-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.synergy-section {
+    grid-column: 1 / -1;
+    background: #111;
+    border: 1px dashed var(--accent-pink);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.synergy-list { display: flex; gap: 15px; margin-top: 10px; }
+
+.synergy-item {
+    background: var(--panel-bg);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--accent-pink);
+    font-size: 0.85rem;
+}
+
+.hidden { display: none; }
+
+/* --- Mobile Safety & Responsiveness --- */
+
+/* Adjust the Enemy Team bar for small screens */
+@media (max-width: 768px) {
+    .slots-container {
+        gap: 5px; /* Reduce gap to fit 5 slots across */
+    }
+
+    .slot {
+        width: 50px; /* Smaller slots for mobile */
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem; /* Shrink title size */
+    }
+
+    /* Make hero grids use more screen real estate */
+    .hero-grid {
+        grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+        gap: 8px;
+    }
+
+    /* Stack the individual counter columns vertically */
+    .counter-lists {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Increase touch target for the 'i' button */
+    .info-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+}
+
+/* Fix for very small devices (portrait phones) */
+@media (max-width: 480px) {
+    .team-bar {
+        padding: 10px;
+    }
+
+    .slot {
+        width: 45px;
+        height: 45px;
+    }
+
+    .hero-grid {
+        grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+    }
+}
+
+/* Ensure images don't break containers */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Mobile-First Layout --- */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+/* Individual Showcase Styling */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-summary {
+    display: flex;
+    flex-direction: column; /* Stack image and text on mobile */
+    align-items: center;
+    gap: 20px;
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.hero-summary img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-pink);
+    object-fit: cover;
+}
+
+.logic-card {
+    background: rgba(34, 211, 238, 0.1);
+    border-left: 4px solid var(--accent-cyan);
+    padding: 15px;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    margin-top: 10px;
+}
+
+.counter-lists {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack roles on mobile */
+    gap: 15px;
+}
+
+.role-col {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Synergy Section for mobile */
+.synergy-box {
+    background: #111;
+    border: 1px dashed var(--accent-pink);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.synergy-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.synergy-tag {
+    background: var(--accent-pink);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* --- Desktop Enhancements (768px+) --- */
+@media (min-width: 768px) {
+    .hero-summary {
+        flex-direction: row; /* Side-by-side image and text */
+        align-items: flex-start;
+    }
+
+    .counter-lists {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for roles */
+    }
+
+    .hero-summary img {
+        width: 180px;
+        height: 180px;
+    }
+}

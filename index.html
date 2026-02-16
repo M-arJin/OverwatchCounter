@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overwatch 2 Counter Picker</title>
+    <title>Overwatch 2 Strategy Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section id="team-selector" class="team-bar">
-        <h2>ENEMY TEAM (Select 5)</h2>
+        <h2>ENEMY TEAM</h2>
         <div id="selected-slots" class="slots-container">
             <div class="slot" data-role="tank">T</div>
             <div class="slot" data-role="dps">D</div>
@@ -16,38 +16,39 @@
             <div class="slot" data-role="support">S</div>
             <div class="slot" data-role="support">S</div>
         </div>
-        <button id="calculate-team-counters" class="calc-btn" disabled>ANALYZE COUNTERS</button>
-        <button id="clear-team" class="clear-btn">CLEAR</button>
+        <div class="team-actions">
+            <button id="calculate-team-counters" class="calc-btn" disabled>ANALYZE TEAM</button>
+            <button id="clear-team" class="clear-btn">CLEAR</button>
+        </div>
     </section>
 
     <div class="container">
         <header>
-            <h1>OVERWATCH 2 <span class="highlight">COUNTERS</span></h1>
-            <p>Select an enemy hero to see their possible counters.</p>
+            <h1>OW2 <span class="highlight">STRATEGIST</span></h1>
+            <p>Select a hero to see their counters and team-based weaknesses.</p>
         </header>
 
         <main id="selection-view">
-            <div class="role-section">
-                <h2>TANKS</h2>
-                <div class="hero-grid" id="tank-grid"></div>
-            </div>
-            <div class="role-section">
-                <h2>DAMAGE</h2>
-                <div class="hero-grid" id="dps-grid"></div>
-            </div>
-            <div class="role-section">
-                <h2>SUPPORT</h2>
-                <div class="hero-grid" id="support-grid"></div>
-            </div>
+            <div class="role-section"><h2>TANKS</h2><div class="hero-grid" id="tank-grid"></div></div>
+            <div class="role-section"><h2>DAMAGE</h2><div class="hero-grid" id="dps-grid"></div></div>
+            <div class="role-section"><h2>SUPPORT</h2><div class="hero-grid" id="support-grid"></div></div>
         </main>
 
         <section id="result-view" class="hidden">
             <button id="back-button">← BACK TO ROSTER</button>
-            <div class="result-header">
-                <h2 id="target-hero-name">Hero Name</h2>
-            </div>
-            <div class="counter-lists" id="counter-display">
+            
+            <div class="result-container">
+                <div class="hero-summary">
+                    <div class="summary-text">
+                        <h2 id="target-hero-name">Hero Name</h2>
+                        <div id="target-logic" class="logic-card"></div>
+                    </div>
                 </div>
+
+                <div class="counter-lists" id="counter-display"></div>
+
+                <div id="synergy-display"></div>
+            </div>
         </section>
     </div>
     <script src="script.js"></script>
