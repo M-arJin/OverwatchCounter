@@ -1,715 +1,617 @@
-/* Import a clean, modern font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
+/* --- Global Theme & Colors --- */
 :root {
-    --bg-dark: #111827;           /* Deep Navy background */
-    --panel-bg: #1f2937;         /* Lighter navy for cards */
-    --accent-pink: #f43f5e;      /* The neon pink highlight */
-    --accent-cyan: #06b6d4;      /* The neon blue highlight */
-    --accent-green: #10b981;     /* The neon green highlight */
-    --text-main: #e5e7eb;        /* Off-white text */
-    --text-dim: #9ca3af;         /* Grayed out text */
-    --border-color: #374151;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    --bg-dark: #051626;        /* Deep Navy */
+    --bg-card: #122a42;        /* Lighter Navy */
+    --accent-cyan: #40e0d0;    /* Overwatch Cyan */
+    --accent-red: #ff4655;     /* Clear Button Red */
+    --text-main: #ffffff;
+    --text-dim: #a0b0c0;
+    --border-radius: 8px;
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    padding: 20px;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the whole page content */
 }
 
+/* --- Top Bar Section --- */
+.team-bar {
+    width: 100%;
+    background: linear-gradient(180deg, #0a1f33 0%, #051626 100%);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #1a3a5a;
+    margin-bottom: 40px;
+}
+
+.slots-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.slot {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed #3a4a5a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.2s;
+}
+
+.slot.occupied {
+    border: 2px solid var(--accent-cyan);
+}
+
+.slot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Main Layout & Centering --- */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px; /* Fixed width for centered desktop look */
+    padding: 0 40px;   /* Consistent side padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
-/* Header Styling */
 header {
     text-align: center;
     margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 900;
-    letter-spacing: -1px;
-}
-
-.highlight {
-    color: var(--accent-pink);
-    text-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+    margin-bottom: 5px;
 }
 
 header p {
     color: var(--text-dim);
 }
 
-/* Hero Grid Layout */
+.highlight {
+    color: var(--accent-cyan);
+}
+
+/* --- Hero Selection Grid --- */
 .role-section {
+    width: 100%;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything within the section */
 }
 
 .role-section h2 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--accent-cyan);
-    letter-spacing: 2px;
-    margin-bottom: 15px;
     border-left: 4px solid var(--accent-cyan);
     padding-left: 10px;
+    margin-bottom: 20px;
+    align-self: flex-start; /* Keeps the title left-aligned relative to the centered grid */
+    width: fit-content;
+    letter-spacing: 1.5px;
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 15px;
-}
-
-/* Hero Button Styling */
-.hero-btn {
-    background: var(--panel-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--text-main);
+    flex-wrap: wrap;    
+    justify-content: center; /* Centers the icons in the middle of the screen */
+    gap: 15px;
+    width: 100%;
 }
 
-.hero-btn:hover {
-    border-color: var(--accent-pink);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.hero-card {
+    position: relative;
+    width: 100px;      /* Slightly smaller size as requested */
+    background: var(--bg-card);
+    border: 1px solid #2a4a6a;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 5px 15px rgba(64, 224, 208, 0.2);
 }
 
 .hero-portrait {
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 100px;     /* Matches width for a square look */
     object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    background: #000;
+    display: block;
 }
 
 .hero-btn span {
-    font-size: 0.75rem;
+    display: block;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 0.65rem;
     font-weight: bold;
     text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Result View Styling */
+/* Info Icon Badge */
+.info-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-cyan);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Buttons --- */
+.calc-btn, .clear-btn {
+    padding: 10px 25px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.calc-btn {
+    background-color: var(--accent-cyan);
+    color: #000;
+}
+
+.calc-btn:disabled {
+    background-color: #3a4a5a;
+    color: #6a7a8a;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    background: transparent;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    margin-left: 10px;
+}
+
+.clear-btn:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+/* --- Results View --- */
+.hidden { display: none !important; }
+
 #result-view {
-    animation: fadeIn 0.3s ease;
+    width: 100%;
+}
+
+.logic-card {
+    background: rgba(64, 224, 208, 0.1);
+    border: 1px solid var(--accent-cyan);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    line-height: 1.6;
+}
+
+#back-button {
+    background: none;
+    border: 1px solid var(--text-dim);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+#back-button:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+/* --- Global Theme & Colors --- */
+:root {
+    --bg-dark: #051626;        
+    --bg-card: #122a42;        
+    --accent-cyan: #40e0d0;    
+    --accent-red: #ff4655;     
+    --text-main: #ffffff;
+    --text-dim: #a0b0c0;
+    --border-radius: 8px;
+    --gold: #ffcc00; /* For highlighting 'Ideal' picks */
+}
+
+/* --- Layout Essentials --- */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden { display: none !important; }
+
+/* --- 1. RESULTS VIEW (Team Calculation) --- */
+#result-view {
+    width: 100%;
+    margin-top: 20px;
+    animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.hidden {
-    display: none;
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #back-button {
     background: transparent;
-    color: var(--accent-pink);
-    border: 1px solid var(--accent-pink);
-    padding: 8px 16px;
-    border-radius: 4px;
+    border: 1px solid var(--text-dim);
+    color: var(--text-dim);
+    padding: 10px 20px;
     cursor: pointer;
-    margin-bottom: 20px;
+    border-radius: 4px;
     font-weight: bold;
+    margin-bottom: 30px;
+    transition: 0.2s;
 }
 
 #back-button:hover {
-    background: var(--accent-pink);
-    color: white;
+    color: #fff;
+    border-color: #fff;
+    background: rgba(255,255,255,0.05);
 }
 
-.result-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+/* Logic & Summary Card */
+.logic-card {
+    background: linear-gradient(135deg, rgba(64, 224, 208, 0.15) 0%, rgba(18, 42, 66, 0.8) 100%);
+    border: 1px solid var(--accent-cyan);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Counter Columns */
+/* --- 2. COUNTER LISTS (Leaderboard Style) --- */
 .counter-lists {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.counter-column {
-    background: rgba(31, 41, 55, 0.5);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 12px;
+    grid-template-columns: repeat(3, 1fr); /* TANK | DPS | SUPPORT */
+    gap: 25px;
+    margin-top: 20px;
 }
 
 .counter-column h3 {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(64, 224, 208, 0.3);
+    padding-bottom: 10px;
     margin-bottom: 20px;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    text-align: center;
 }
 
-ul {
-    list-style: none;
-}
-
+/* Individual Counter Hero Cards */
 .counter-item {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-card);
+    border: 1px solid #2a4a6a;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    transition: transform 0.2s;
 }
 
-.img-wrapper {
-    position: relative;
-    margin-right: 15px;
+.counter-item:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-cyan);
+}
+
+/* Gold border for top-tier picks */
+.counter-item.ideal-pick {
+    border-left: 4px solid var(--gold);
+    background: linear-gradient(90deg, rgba(255, 204, 0, 0.05) 0%, var(--bg-card) 100%);
 }
 
 .counter-mini-img {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Ideal Pick / Hard Counter specific styling */
-.ideal-pick {
-    background: rgba(16, 185, 129, 0.1);
-    border-radius: 8px;
+.counter-details {
+    flex-grow: 1;
 }
 
-.ideal-pick .counter-mini-img {
-    border-color: var(--accent-green);
-}
-
-.star-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--accent-green);
-    color: black;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 20px;
-}
-
-.counter-info .hero-name {
-    display: block;
+.hero-name {
     font-weight: bold;
-    font-size: 1.1rem;
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
 }
 
 .counter-type {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-dim);
     text-transform: uppercase;
 }
 
-.ideal-pick .counter-type {
-    color: var(--accent-green);
-}
-
-.team-bar {
-    background: var(--panel-bg);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--accent-cyan);
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.slots-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.slot {
-    width: 60px;
-    height: 60px;
-    border: 2px dashed var(--border-color);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.slot:hover { border-color: var(--accent-pink); }
-
-.slot-img { width: 100%; height: 100%; object-fit: cover; }
-
-.calc-btn {
-    background: var(--accent-green);
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    font-weight: 900;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.calc-btn:disabled {
-    background: var(--text-dim);
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
+/* --- 3. SCORE BARS (Visualizing Advantage) --- */
 .score-bar {
     width: 100%;
     height: 4px;
-    background: #000;
-    margin-top: 5px;
-}
-
-.score-bar .fill {
-    height: 100%;
-    background: var(--accent-green);
-    box-shadow: 0 0 10px var(--accent-green);
-}
-
-/* Clear Team Button - Destructive Utility Style */
-.clear-btn {
-    background: transparent;
-    color: var(--accent-pink);
-    border: 1px solid var(--accent-pink);
-    padding: 10px 20px;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-left: 10px;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    position: relative;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    margin-top: 8px;
     overflow: hidden;
 }
 
-/* Hover effect: Subtle glow and fill */
-.clear-btn:hover {
-    background: rgba(244, 63, 94, 0.1); /* Very faint pink tint */
-    box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
-    color: #fff;
-    border-color: #fff;
+.score-bar .fill {
+    height: 100%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+    transition: width 1s ease-in-out;
 }
 
-/* Active effect: Click feedback */
-.clear-btn:active {
-    transform: scale(0.95);
-    background: var(--accent-pink);
+/* --- 4. INDIVIDUAL HERO SELECTION (Single Counter View) --- */
+.hero-summary {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
 }
 
-/* Optional: Add a small 'X' icon via CSS before the text */
-.clear-btn::before {
-    content: '✕ ';
-    font-size: 0.9rem;
-    margin-right: 5px;
-}
-
-/* Ensure the button looks disabled if the team is already empty */
-.clear-btn:disabled {
-    border-color: var(--border-color);
-    color: var(--text-dim);
-    cursor: not-allowed;
-    opacity: 0.5;
-    box-shadow: none;
-}
-
-.slot {
+#target-hero-name {
+    font-size: 2.5rem;
     font-weight: 900;
-    color: var(--border-color); /* Dark gray letters */
-    font-size: 1.5rem;
-    position: relative;
+    margin: 0;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(64, 224, 208, 0.3);
 }
 
-.slot.occupied {
-    border-style: solid;
-    border-color: var(--accent-cyan);
+.team-counter-card {
+    margin-bottom: 20px;
 }
 
-.slot.occupied img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
+/* Responsive Fix for Desktop Columns */
+@media (max-width: 900px) {
+    .counter-lists {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
 }
 
-/* Card Container for Info button + Selection button */
-.hero-card {
-    position: relative;
+
+/* --- NEW: SYNERGY SECTION STYLES --- */
+
+/* The main container for synergies */
+.synergy-section {
+    grid-column: 1 / -1; /* Makes it span full width if inside a grid */
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 204, 0, 0.05); /* Very subtle gold tint */
+    border: 1px solid rgba(255, 204, 0, 0.2);
+    border-radius: var(--border-radius);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Header for Team Synergies */
+.synergy-section h3 {
+    font-size: 0.9rem;
+    color: var(--gold); /* Gold theme for friendly synergies */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Flex container for the list of heroes */
+.synergy-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Individual Synergy Hero Item */
+.synergy-hero {
     display: flex;
     flex-direction: column;
-}
-
-.info-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
-    background: var(--accent-cyan);
-    color: black;
-    border: none;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.info-btn:hover {
-    background: white;
-    box-shadow: 0 0 10px var(--accent-cyan);
-}
-
-/* Team Analysis Cards */
-.team-counter-card {
-    background: rgba(0,0,0,0.2);
-    border: 1px solid var(--border-color);
+    align-items: center;
+    width: 90px;
+    background: var(--bg-card); /* Matches hero card background */
     padding: 10px;
     border-radius: 6px;
-    margin-bottom: 15px;
+    border: 1px solid rgba(255, 204, 0, 0.2);
+    transition: transform 0.2s, border-color 0.2s;
 }
 
+.synergy-hero:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+}
+
+/* Mini Hero Image for Synergies */
+.synergy-hero .counter-mini-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text name under the mini-image */
+.synergy-hero span {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--text-main);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- TEAM ANALYSIS RESULTS VIEW --- */
+
+/* Container for the 3-column layout (Tank, DPS, Support) */
+.counter-lists {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Individual Column Styling */
+.counter-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.counter-column h3 {
+    font-size: 0.85rem;
+    color: var(--accent-cyan); /* Overwatch Cyan */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(64, 224, 208, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* The Main Hero Recommendation Card */
+.team-counter-card {
+    background: var(--bg-card); /* Lighter Navy */
+    border: 1px solid #2a4a6a;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.2s, border-color 0.2s;
+    animation: fadeIn 0.4s ease-out; /* Smooth entrance */
+}
+
+.team-counter-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 5px 15px rgba(64, 224, 208, 0.1);
+}
+
+/* Header: Hero Image and Name */
 .counter-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 12px;
 }
 
+.counter-mini-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-name {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Details: Effective Vs text and Progress Bar */
 .counter-details p {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    margin-bottom: 5px;
+    font-size: 0.75rem;
+    color: var(--text-dim); /* Muted gray-blue */
+    margin: 0 0 8px 0;
+    line-height: 1.4;
 }
 
 .counter-details strong {
-    color: var(--accent-pink);
+    color: var(--accent-cyan); /* Highlights the heroes they counter */
 }
 
+/* The Score/Advantage Bar */
 .score-bar {
-    height: 3px;
-    background: #111;
     width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .score-bar .fill {
     height: 100%;
     background: var(--accent-cyan);
-    box-shadow: 0 0 5px var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan); /* Glowing effect */
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animates the fill */
 }
 
-/* Synergy Section Styling */
-.synergy-section {
-    grid-column: 1 / -1; /* Makes it span across the bottom of the columns */
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(var(--accent-cyan-rgb), 0.05);
-    border-top: 1px solid var(--accent-cyan);
-    border-radius: 4px;
-}
-
-.synergy-section h3 {
-    color: var(--accent-cyan);
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-}
-
-.synergy-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.synergy-hero {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #676b47;
-    padding: 5px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    opacity: 100;
-}
-
-.synergy-hero span {
-    font-size: 0.8rem;
-    color: #fff;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-
-:root {
-    --bg-dark: #0f172a;
-    --panel-bg: #1e293b;
-    --accent-pink: #f43f5e;
-    --accent-cyan: #22d3ee;
-    --text-main: #f8fafc;
-    --text-dim: #94a3b8;
-    --border: #334155;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 20px;
-}
-
-.container { max-width: 1100px; margin: 0 auto; }
-
-.highlight { color: var(--accent-pink); text-shadow: 0 0 10px rgba(244, 63, 94, 0.5); }
-
-/* Hero Selection Grid */
-.hero-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 12px;
-    margin-bottom: 30px;
-}
-
-.hero-card {
-    cursor: pointer;
-    transition: transform 0.2s, filter 0.2s;
-    text-align: center;
-}
-
-.hero-card img {
-    width: 100%;
-    border-radius: 8px;
-    border: 2px solid var(--border);
-}
-
-.hero-card:hover { transform: scale(1.1); }
-.hero-card:hover img { border-color: var(--accent-cyan); }
-
-/* Result View Layout */
-.result-layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
-    margin-top: 20px;
-}
-
-.hero-focus img {
-    width: 100%;
-    border-radius: 12px;
-    border: 4px solid var(--accent-pink);
-}
-
-.logic-box {
-    background: rgba(34, 211, 238, 0.1);
-    border-left: 4px solid var(--accent-cyan);
-    padding: 15px;
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: var(--accent-cyan);
-}
-
-.counter-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-}
-
-.synergy-section {
-    grid-column: 1 / -1;
-    background: #111;
-    border: 1px dashed var(--accent-pink);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.synergy-list { display: flex; gap: 15px; margin-top: 10px; }
-
-.synergy-item {
-    background: var(--panel-bg);
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid var(--accent-pink);
-    font-size: 0.85rem;
-}
-
-.hidden { display: none; }
-
-/* --- Mobile Safety & Responsiveness --- */
-
-/* Adjust the Enemy Team bar for small screens */
-@media (max-width: 768px) {
-    .slots-container {
-        gap: 5px; /* Reduce gap to fit 5 slots across */
-    }
-
-    .slot {
-        width: 50px; /* Smaller slots for mobile */
-        height: 50px;
-        font-size: 1rem;
-    }
-
-    header h1 {
-        font-size: 2rem; /* Shrink title size */
-    }
-
-    /* Make hero grids use more screen real estate */
-    .hero-grid {
-        grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-        gap: 8px;
-    }
-
-    /* Stack the individual counter columns vertically */
+/* Responsive: Stack columns on smaller screens */
+@media (max-width: 900px) {
     .counter-lists {
-        grid-template-columns: 1fr;
-    }
-
-    .result-header h2 {
-        font-size: 1.8rem;
-    }
-
-    /* Increase touch target for the 'i' button */
-    .info-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 16px;
-    }
-}
-
-/* Fix for very small devices (portrait phones) */
-@media (max-width: 480px) {
-    .team-bar {
-        padding: 10px;
-    }
-
-    .slot {
-        width: 45px;
-        height: 45px;
-    }
-
-    .hero-grid {
-        grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
-    }
-}
-
-/* Ensure images don't break containers */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* --- Mobile-First Layout --- */
-.hero-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 10px;
-}
-
-/* Individual Showcase Styling */
-.result-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.hero-summary {
-    display: flex;
-    flex-direction: column; /* Stack image and text on mobile */
-    align-items: center;
-    gap: 20px;
-    background: var(--panel-bg);
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.hero-summary img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid var(--accent-pink);
-    object-fit: cover;
-}
-
-.logic-card {
-    background: rgba(34, 211, 238, 0.1);
-    border-left: 4px solid var(--accent-cyan);
-    padding: 15px;
-    font-size: 0.9rem;
-    color: var(--accent-cyan);
-    margin-top: 10px;
-}
-
-.counter-lists {
-    display: grid;
-    grid-template-columns: 1fr; /* Stack roles on mobile */
-    gap: 15px;
-}
-
-.role-col {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 8px;
-}
-
-/* Synergy Section for mobile */
-.synergy-box {
-    background: #111;
-    border: 1px dashed var(--accent-pink);
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.synergy-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.synergy-tag {
-    background: var(--accent-pink);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-/* --- Desktop Enhancements (768px+) --- */
-@media (min-width: 768px) {
-    .hero-summary {
-        flex-direction: row; /* Side-by-side image and text */
-        align-items: flex-start;
-    }
-
-    .counter-lists {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for roles */
-    }
-
-    .hero-summary img {
-        width: 180px;
-        height: 180px;
+        grid-template-columns: 1fr; /* Single column for mobile/tablet */
     }
 }
